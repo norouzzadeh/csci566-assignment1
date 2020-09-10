@@ -39,7 +39,7 @@ class SGD(Optimizer):
         self.net = net
         self.lr = lr
 
-    def update(self):
+    def update(self, layer):
         for n, dv in layer.grads.items():
             layer.params[n] -= self.lr * dv
 
@@ -52,7 +52,7 @@ class SGDM(Optimizer):
         self.momentum = momentum
         self.velocity = {}  # last update of the velocity
 
-    def update(self):
+    def update(self, layer):
         #############################################################################
         # TODO: Implement the SGD + Momentum                                        #
         #############################################################################
@@ -71,7 +71,7 @@ class RMSProp(Optimizer):
         self.eps = eps
         self.cache = {}  # decaying average of past squared gradients
 
-    def update(self):
+    def update(self, layer):
         #############################################################################
         # TODO: Implement the RMSProp                                               #
         #############################################################################
@@ -92,7 +92,7 @@ class Adam(Optimizer):
         self.vt = {}
         self.t = t
 
-    def update(self):
+    def update(self, layer):
         #############################################################################
         # TODO: Implement the Adam                                                  #
         #############################################################################
