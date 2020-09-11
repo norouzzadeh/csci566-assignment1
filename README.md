@@ -77,10 +77,6 @@ PLEASE USE **PIAZZA** TO POST QUESTIONS (under folder assignment1).
 
 ## FAQ
 
-- **Install `opencv-python` using conda**\
-`requirements.txt` specifies `opencv-python==4.0.0.21` as the recommended version, but it is not available on conda.
-If you are using conda, you can install the latest stable opencv version on conda: https://anaconda.org/tstenner/opencv
-
 - **Cannot get 50% accuracy for TinyNet in Problem 1**\
 You can try to vary the batch size, epochs, learning rate, and parameters of fc layers.
 
