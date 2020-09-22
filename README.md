@@ -78,7 +78,7 @@ PLEASE USE **PIAZZA** TO POST QUESTIONS (under folder assignment1).
 ## FAQ
 
 - **Cannot get 50% accuracy for TinyNet in Problem 1**\
-You can try to vary the batch size, epochs, learning rate, and parameters of fc layers.
+You can try to vary the batch size, epochs and learning rate decay. Please don't modify any code outside the TODO block.
 
 - **What is a good starting learning rate?**\
 There is a good article: https://medium.com/octavian-ai/which-optimizer-and-learning-rate-should-i-use-for-deep-learning-5acb418f9b2
