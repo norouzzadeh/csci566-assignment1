@@ -132,7 +132,11 @@ class VanillaRNN(object):
         # Store the results in the variable output provided above as well as       #
         # values needed for the backward pass.                                     #
         ############################################################################
-        pass
+        #pass
+        # MYCODE - START
+        next_h = np.tanh(prev_h.dot(Wh) + x.dot(Wx) + b) # yield NxH matrix
+        meta = (Wx, Wh, x, prev_h)
+        # MYCODE - END
         #############################################################################
         #                             END OF YOUR CODE                              #
         #############################################################################
