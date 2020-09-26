@@ -134,6 +134,9 @@ class VanillaRNN(object):
         ############################################################################
         #pass
         # MYCODE - START
+        Wh = self._wh
+        Wx = self._wx
+        b = self._b
         next_h = np.tanh(prev_h.dot(Wh) + x.dot(Wx) + b) # yield NxH matrix
         meta = (Wx, Wh, x, prev_h)
         # MYCODE - END
