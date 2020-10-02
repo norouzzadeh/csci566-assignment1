@@ -203,7 +203,7 @@ class VanillaRNN(object):
   
         next_h = h0
         h = np.empty((N, T, H))
-        for t in xrange(T):
+        for t in range(T):
           curx = x[:,t,:]
           (next_h, cur_cache) = step_forward(curx, next_h, Wx, Wh, b)
           h[:, t, :] = next_h
@@ -243,7 +243,7 @@ class VanillaRNN(object):
         dWh = np.zeros((H, H))
         db = np.zeros(H)
   
-        for t in reversed(xrange(T)):
+        for t in reversed(range(T)):
           cur_cache = cache[t]
           total_dh = dh[:, t, :] + dprev_h
           (cur_dx, dprev_h, cur_dWx, cur_dWh, cur_db) = step_backward(
