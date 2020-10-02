@@ -197,6 +197,17 @@ class VanillaRNN(object):
         # input data. You should use the step_forward function that you defined      #
         # above. You can use a for loop to help compute the forward pass.            #
         ##############################################################################
+        h, cache = None, []
+        N, T, D = x.shape
+        H = h0.shape[1]
+  
+        next_h = h0
+        h = np.empty((N, T, H))
+        for t in xrange(T):
+          curx = x[:,t,:]
+          (next_h, cur_cache) = step_forward(curx, next_h, Wx, Wh, b)
+          h[:, t, :] = next_h
+          cache.append(cur_cache)
         pass
         ##############################################################################
         #                               END OF YOUR CODE                             #
@@ -223,6 +234,26 @@ class VanillaRNN(object):
         # defined above. You can use a for loop to help compute the backward pass.   #
         # HINT: Gradients of hidden states come from two sources                     #
         ##############################################################################
+        N, T, H = dh.shape
+        D = cache[0][1].shape[0]
+
+        dx = np.empty((N, T, D))
+        dprev_h = np.zeros((N, H))
+        dWx = np.zeros((D, H))
+        dWh = np.zeros((H, H))
+        db = np.zeros(H)
+  
+        for t in reversed(xrange(T)):
+          cur_cache = cache[t]
+          total_dh = dh[:, t, :] + dprev_h
+          (cur_dx, dprev_h, cur_dWx, cur_dWh, cur_db) = step_backward(
+          total_dh, cur_cache)
+          dx[:, t, :] = cur_dx
+          dWx += cur_dWx
+          dWh += cur_dWh
+          db += cur_db
+
+        dh0 = dprev_h
         pass
         ##############################################################################
         #                               END OF YOUR CODE                             #
