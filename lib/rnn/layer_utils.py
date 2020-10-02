@@ -163,6 +163,8 @@ class VanillaRNN(object):
         #############################################################################
 
         (Wx, Wh, x, prev_h) = meta
+        b = self.params[self.b_name]
+        next_h = np.tanh(prev_h.dot(Wh) + x.dot(Wx) + b)
 
         tanh_deriv = 1.0 - next_h**2
 
