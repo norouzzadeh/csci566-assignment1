@@ -164,17 +164,17 @@ class VanillaRNN(object):
 
 	(Wx, Wh, x, prev_h) = meta
 
-  	tanh_deriv = 1.0 - next_h**2
+	tanh_deriv = 1.0 - next_h**2
 
-  	dArg = dnext_h * tanh_deriv
+	dArg = dnext_h * tanh_deriv
 
-  	dx = dArg.dot(Wx.T)
+	dx = dArg.dot(Wx.T)
 
-  	dprev_h = dArg.dot(Wh.T)
+	dprev_h = dArg.dot(Wh.T)
 
-  	dWx = x.T.dot(dArg)
-  	dWh = prev_h.T.dot(dArg)
-  	db = dArg.sum(axis=0)
+	dWx = x.T.dot(dArg)
+	dWh = prev_h.T.dot(dArg)
+	db = dArg.sum(axis=0)
         
 	pass
 	
