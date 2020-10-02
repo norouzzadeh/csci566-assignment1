@@ -138,7 +138,7 @@ class VanillaRNN(object):
         b = self.params[self.b_name]
         next_h = np.tanh(prev_h.dot(Wh) + x.dot(Wx) + b) # yield NxH matrix
         meta = (Wx, Wh, x, prev_h)
-	pass
+        pass
         #############################################################################
         #                             END OF YOUR CODE                              #
         #############################################################################
